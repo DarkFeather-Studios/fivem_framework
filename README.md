@@ -66,4 +66,5 @@ Client
 
 - `SetVehicleProps(int vehicle, table Properties)`
 
--
+Note: There is some undocumented functions and incomplete code that the average user will find of no use, but an expert user may find a big answer to bigger problems. This is especially true of the PlayerTracker module, meant to replace ESX's player tracking, but went thorugh so many revisions and planning meeting it is a fragment of what it once was, all alone and obscure.
+
