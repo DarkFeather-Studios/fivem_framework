@@ -8,14 +8,14 @@ client_scripts {
     'Utils.lua',
     'Config.lua',
     'callback_cl.lua',
-    'PlayerTracker_cl.lua'
+    --'PlayerTracker_cl.lua' ONLY re-enable if you make sure it works for you. This module is incomplete due to indecsisiveness. It was a shortfell attempt at replacing ESX.
 }
 
 server_scripts {
     'Config.lua',
     'Utils.lua',
     'callback_sv.lua',
-    'PlayerTracker_sv.lua',
+    --'PlayerTracker_sv.lua' ONLY re-enable if you make sure it works for you. This module is incomplete due to indecsisiveness. It was a shortfell attempt at replacing ESX.
     '@mysql-async/lib/MySQL.lua'
 }
 
@@ -77,4 +77,4 @@ server_exports {
     "Error",
     "Success",
     "Info"
-} 
+}
