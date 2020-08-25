@@ -828,8 +828,11 @@ else --======================= ONLY works on the client-side ===================
             --Peds
             TempPedsInWorld    = {}
             TempPlayersInWorld = {}
+            PedsInWorld = {}
+            PlayersInWorld = {}
             _handle, _ped      = FindFirstPed()
 
+            table.insert(TempPedsInWorld, _ped)
             repeat
                 if IsPedAPlayer(_ped) then
                     TempPlayersInWorld[GetPlayerServerId(NetworkGetPlayerIndexFromPed(_ped))] = NetworkGetPlayerIndexFromPed(_ped)
@@ -845,8 +848,10 @@ else --======================= ONLY works on the client-side ===================
 
             --Objects
             TempObjectsInWorld = {}
+            ObjectsInWorld = {}
             _handle, _obj      = FindFirstObject()
 
+            table.insert(TempObjectsInWorld, _obj)
             repeat
                 success, _obj = FindNextObject(_handle)
                 table.insert(TempObjectsInWorld, _obj)
