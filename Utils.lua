@@ -25,13 +25,13 @@ function tobool(item)
     local itemtype = type(item)
     if itemtype == type(13) and item > 0 then
         if item > 1 then 
-            Warn("ARP_Base > Utils.lua > tobool", "'item' is a number greater than 1, still returning true!", true)
+            Warn("DFS_Base > Utils.lua > tobool", "'item' is a number greater than 1, still returning true!", true)
         end
         return true
     elseif itemtype == type(13) and item == 0 then return false
     elseif itemtype == type("stringythingy") and item ~= "false" and item ~= "0" then
         if item ~= "true" then
-            Warn("ARP_Base > Utils.lua > tobool", "'item' is a string but is not 'true' or 'false', still returning true!", true)
+            Warn("DFS_Base > Utils.lua > tobool", "'item' is a string but is not 'true' or 'false', still returning true!", true)
         end
         return true
     elseif itemtype == type("stringythingy") and (item == "0" or item == "false") then return false
@@ -162,11 +162,11 @@ if IsDuplicityVersion() then
             end)
 
             if Config.dfs.IsDebugBuild then
-                Warn("ARP_Base", "IsDebugBuild is set to true in ARP_Base > Config.lua")
+                Warn("DFS_Base", "IsDebugBuild is set to true in DFS_Base > Config.lua")
             end
 
             if Config.dfs.VerboseLogging then
-                Warn("ARP_Base", "VerboseLogging is set to true in ARP_Base > Config.lua")
+                Warn("DFS_Base", "VerboseLogging is set to true in DFS_Base > Config.lua")
             end
         end
     end)
@@ -191,7 +191,7 @@ if IsDuplicityVersion() then
         }
     
         if not source then
-            Error("ARP_Base > Utils.lua > GetTheirIdentifiers", "NilArgument 'source'. Aborting...")
+            Error("DFS_Base > Utils.lua > GetTheirIdentifiers", "NilArgument 'source'. Aborting...")
             return PlayerIdentifiers
         end
         PlayerIdentifiers.ServerID = source
@@ -214,7 +214,7 @@ if IsDuplicityVersion() then
 
         if not PlayerIdentifiers.DiscordID and PlayerIdentifiers.SteamID then
             -- We need to double check to see if we have this tucked away so that it doesn't crap itself
-            PlayerIdentifiers.DiscordID = MySQL.Sync.fetchScalar('SELECT `discord_id` FROM `arp_useraccounts` WHERE `steam_id` = \''..PlayerIdentifiers.SteamID.."'")
+            PlayerIdentifiers.DiscordID = MySQL.Sync.fetchScalar('SELECT `discord_id` FROM `dfs_useraccounts` WHERE `steam_id` = \''..PlayerIdentifiers.SteamID.."'")
         end
 
         if PlayerIdentifiers.SteamID then
@@ -359,7 +359,7 @@ else --======================= ONLY works on the client-side ===================
         modelHash = modelHash or 0x94204D89
 
         if not IsModelInCdimage(modelHash) or not IsModelAVehicle(modelHash) then
-            Error("ARP_Base > Utils.lua > SpawnVehicle", "Invalid spawn modelHash '"..modelHash.."'; Aborting.")
+            Error("DFS_Base > Utils.lua > SpawnVehicle", "Invalid spawn modelHash '"..modelHash.."'; Aborting.")
             return nil
         end
         --TODO: Pull in and upgrade ESX.VehicleProps methods
@@ -369,7 +369,7 @@ else --======================= ONLY works on the client-side ===================
         end
         
         if not vector3Position then
-            Error("ARP_Base > Utils.lua > SpawnVehicle", "Invalid vector3 spawn position '"..vector3Position.."'; Aborting.")
+            Error("DFS_Base > Utils.lua > SpawnVehicle", "Invalid vector3 spawn position '"..vector3Position.."'; Aborting.")
             return nil
         end
     
@@ -429,7 +429,7 @@ else --======================= ONLY works on the client-side ===================
             if type(VehicleProps) == "string" then
                 VehicleProps = json.decode(VehicleProps)
             end
-            TriggerEvent("arpcl:GetKeysForCar", PlateNumberText or (VehicleProps and VehicleProps.plate) or GetVehicleNumberPlateText(newCar))
+            TriggerEvent("dfscl:GetKeysForCar", PlateNumberText or (VehicleProps and VehicleProps.plate) or GetVehicleNumberPlateText(newCar))
         end
 
         if FuelLevel then
